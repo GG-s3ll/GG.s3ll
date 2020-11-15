@@ -15,15 +15,15 @@ class Genero(models.Model):
 
 
 class Desarrollador(models.Model):
-    nombreDesarrollador = models.CharField(max_length=100)
+    desarrollador = models.CharField(max_length=100)
     fecha_creacion= models.DateField(
         'Fecha de Creación', null=True, blank=True)
 
     class Meta:
-        ordering = ['nombreDesarrollador']
+        ordering = ['desarrollador']
 
     def __str__(self):
-        return f'{self.nombreDesarrollador}'
+        return f'{self.desarrollador}'
 
     def get_absolute_url(self):
         return reverse("Desarrollador-detail", args=[str(self.id)])
@@ -34,9 +34,11 @@ class Juego(models.Model):
     desarrollador = models.ForeignKey(Desarrollador, on_delete=models.SET_NULL, null=True)
     sinopsis = models.TextField(
         max_length=1000, help_text='Ingresa una breve descripción del juego')
+    clasificacion = models.TextField(
+        max_length=1000, help_text='Ingresa una clasificacion del juego')
     genero = models.ManyToManyField(
         Genero, help_text='Seleccione un genero para este juego')
-    foto = models.ImageField(upload_to='images')
+    foto = models.ImageField(upload_to='imagenes')
 
     def __str__(self):
         return self.titulo
@@ -65,7 +67,7 @@ class Inventario(models.Model):
     juego = models.ForeignKey(Juego, on_delete=models.SET_NULL, null=True)
     idioma = models.ForeignKey(Idiomas, on_delete=models.SET_NULL, null=True)
     lanzamiento = models.CharField(max_length=20)
-    estatus = models.CharField(max_length=1, choices=ESTADO_JUEGO,
+    estado = models.CharField(max_length=2, choices=ESTADO_JUEGO,
                                blank=True, default='m', help_text='Disponibilidad de Juego')
 
     class Meta:
