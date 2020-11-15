@@ -1,0 +1,18 @@
+{% extends 'base_generica.html' %} 
+{% load static %}
+
+{% block content %} 
+<h1>GGsell :: Inicio</h1>
+<p>Bienvenido a <em>GGsell</em>, un sitio básico en Django para Desarrollo de Aplicación Web y Mobile</p>
+<hr>
+<h3>Contenido Dinamico</h3>
+<p>Nuestra biblioteca tienes los siguientes recuentos de registros:</p>
+<ul>
+    <li><strong>Juegos: </strong>{{numero_juegos}}</li>
+    <li><strong>Juegos Disponibles: </strong>{{numero_inventario_disponible}}</li>
+    <li><strong>Desarrollador: </strong>{{numero_desarrollador}}</li>
+</ul>
+<p>Ha visitado esta página {{numero_visitas}}{% if numero_visitas == 1%} vez {% else %} veces {% endif %}</p>
+
+<img src="/GGcatalogo/static/img/banner.png" class="img-fluid">
+{% endblock %}

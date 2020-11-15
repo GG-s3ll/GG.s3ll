@@ -7,8 +7,8 @@ admin.site.register(Genero)
 
 @admin.register(Desarrollador)
 class DesarrolladorAdmin(admin.ModelAdmin):
-    list_display = ('desarrollador', 'fecha_creacion')
-    fields = [('desarrollador'), 'fecha_creacion']
+    list_display = ('desarrollador', 'creacion')
+    fields = [('desarrollador'), 'creacion']
 
 @admin.register(Juego)
 class JuegoAdmin(admin.ModelAdmin):
@@ -19,7 +19,7 @@ class InventarioAdmin(admin.ModelAdmin):
     list_filter = ('estado',)
     fieldsets = (
         ('Juego', {
-            'fields': ('juego', 'fecha_lanzamiento', 'idiomas', 'codigo')
+            'fields': ('juegos', 'lanzamiento', 'idioma', 'id')
         }),
         ('Disponibilidad', {
             'fields': ('estado',)

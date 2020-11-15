@@ -16,8 +16,8 @@ class Genero(models.Model):
 
 class Desarrollador(models.Model):
     desarrollador = models.CharField(max_length=100)
-    fecha_creacion= models.DateField(
-        'Fecha de Creación', null=True, blank=True)
+    creacion= models.DateField(
+        'Creación', null=True, blank=True)
 
     class Meta:
         ordering = ['desarrollador']
@@ -26,7 +26,7 @@ class Desarrollador(models.Model):
         return f'{self.desarrollador}'
 
     def get_absolute_url(self):
-        return reverse("Desarrollador-detail", args=[str(self.id)])
+        return reverse("desarrollador_detail", args=[str(self.id)])
 
 
 class Juego(models.Model):
@@ -44,7 +44,7 @@ class Juego(models.Model):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse("juego-detail", args=[str(self.id)])
+        return reverse("juegos_detail", args=[str(self.id)])
 
 
 class Idiomas(models.Model):
@@ -64,7 +64,7 @@ class Inventario(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
                           help_text='ID es único para cada juego en particular en toda la tienda')
-    juego = models.ForeignKey(Juego, on_delete=models.SET_NULL, null=True)
+    juegos = models.ForeignKey(Juego, on_delete=models.SET_NULL, null=True)
     idioma = models.ForeignKey(Idiomas, on_delete=models.SET_NULL, null=True)
     lanzamiento = models.CharField(max_length=20)
     estado = models.CharField(max_length=2, choices=ESTADO_JUEGO,
@@ -74,4 +74,4 @@ class Inventario(models.Model):
         ordering: ['disponibilidad']
 
     def __str__(self):
-        return f'{self.id} ({self.juego.titulo})'
+        return f'{self.id} ({self.juegos.titulo})'
