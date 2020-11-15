@@ -35,7 +35,7 @@ class Juego(models.Model):
     sinopsis = models.TextField(
         max_length=1000, help_text='Ingresa una breve descripción del juego')
     clasificacion = models.TextField(
-        max_length=1000, help_text='Ingresa una clasificacion del juego')
+        max_length=100, help_text='Ingresa una clasificacion del juego')
     genero = models.ManyToManyField(
         Genero, help_text='Seleccione un genero para este juego')
     foto = models.ImageField(upload_to='imagenes')

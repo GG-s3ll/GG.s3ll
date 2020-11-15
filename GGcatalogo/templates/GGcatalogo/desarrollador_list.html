@@ -1,5 +1,10 @@
 {% extends 'base_generica.html' %}
+{% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
+<body>
 <h1>Listado de Desarrolladores</h1>
 
 {% if desarrollador_list %}
@@ -12,6 +17,7 @@
 </ul>
 {% else %}
 <p>No hay desarrollador en la Tienda</p>
+</body>
 {% endif %}
 
 {% endblock %}

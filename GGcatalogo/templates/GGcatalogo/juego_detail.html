@@ -1,5 +1,9 @@
 {% extends 'base_generica.html' %}
+{% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
 <div class="container-fluid">
     <h1>Titulo: {{juego.titulo}}</h1>
     <div class="row">

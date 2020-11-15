@@ -8,7 +8,9 @@ h2 a {
   font-family: "latin";
 }
 
+
 body {
+  background-color: #FF9B00;
   padding-left: 15px;
 }
 
@@ -32,7 +34,8 @@ body {
   margin-left: 40px;
 }
 
-h1,
+h1 {color: #000000;
+  font-family: "latin", cursive;}
 h2,
 h3,
 h4 {
